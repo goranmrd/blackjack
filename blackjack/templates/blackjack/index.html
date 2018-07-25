@@ -10,7 +10,7 @@
     <form action='update_game/' method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" id="update_button" hidden="hidden">Submit</button>
+        <button type="submit" id="update_button">Submit</button>
     </form>
     <div class="container-5">
         <h2>Money: $<span id="money">{{ games.money }}</span></h2>

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block javascript %}
+  <script>
+    let list;
+	  list = document.querySelectorAll("input");
+	  for (let i = 0; i < list.length; ++i) {
+		  list[i].classList.add('form-control');
+	  }
+  </script>
+{% endblock %}
+
+{% block content %}
+
+  <div class="row form_row">
+
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h1>Log In</h1>
+    <form class="form-horizontal" method="post">{% csrf_token %}
+                <fieldset>
+                    <legend>{{ title }}</legend>
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <div class="form-group">
+                                <label>{{ field.label }}</label>
+                                {{ field }}
+                                <span class="help-inline">
+                                    {% for error in  field.errors %}{{ error }}{% endfor %}
+                                </span>
+                            </div>
+                        {% else %}
+                            <div class="form-group">
+                                <label>{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.help_text %}
+                                    <p class="help-inline"><small>{{ field.help_text|safe }}</small></p>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </fieldset>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary login" >Login</button>
+                </div>
+            </form>
+    </div>
+  </div>
+
+{% endblock %}

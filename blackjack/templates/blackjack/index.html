@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row" style="padding:20px;">
+            <div class="col-md-12 text-center">
+                <h1>Player:  {{ user.username }}</h1>
+            </div>
+        </div>
+    </div>
+    <form action='update_game/' method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" id="update_button" hidden="hidden">Submit</button>
+    </form>
+    <div class="container-5">
+        <h2>Money: $<span id="money">{{ games.money }}</span></h2>
+        <h2><span id='blackjack-result'>Let's play</span></h2>
+        <div class="flex-blackjack-row-1">
+
+            <div id="your-box">
+                <h2>You: <span id="your-blackjack-score">0</span></h2>
+            </div>
+
+            <div id="dealer-box">
+                <h2>Dealer: <span id="dealer-blackjack-score">0</span></h2>
+            </div>
+
+        </div>
+
+        <div class="flex-blackjack-row-2">
+            <div>
+                <button class='btn-lg btn-primary mr-2' id='blackjack-hit-button'>Hit</button>
+                <button class='btn-lg btn-warning mr-2' id='blackjack-stand-button'>Stand</button>
+                <button class='btn-lg btn-danger mr-2' id='blackjack-deal-button'>Deal</button>
+            </div>
+        </div>
+
+        <div class="flex-blackjack-row-3">
+            <table>
+                <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Draws</th>
+                </tr>
+
+                <tr>
+                    <td><span id="wins" name="wins">{{ games.wins }}</span></td>
+                    <td><span id="losses" name="losses">{{ games.losses }}</span></td>
+                    <td><span id="draws" name="draws">{{ games.draws }}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

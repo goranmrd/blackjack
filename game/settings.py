@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from django.contrib.messages import constants as messages
+import django-heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
@@ -20,9 +21,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = '^hk47(a0#!7dl78=3f-t&f7m50ji=xkgpcyj=6z4z6=$s#wyaq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -127,3 +128,5 @@ MESSAGE_TAGS = {
 
 LOGIN_REDIRECT_URL = '/blackjack'
 LOGOUT_REDIRECT_URL = '/thanks'
+# Activate Django-Heroku.
+django_heroku.settings(locals())

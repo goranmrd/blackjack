@@ -14,7 +14,11 @@ class GameUpdateForm(forms.ModelForm):
     class Meta:
         fields = ('user','money','wins','losses', 'draws')
         model = Game
-        # I made user field read only just for you don't mess the database while testing the form we will remove it later
+        # Hiding the form fields 
         widgets = {
-            'user': forms.TextInput(attrs={'readonly': 'readonly'}),
+            'user': forms.HiddenInput(),
+            'money': forms.HiddenInput(),
+            'wins': forms.HiddenInput(),
+            'losses': forms.HiddenInput(),
+            'draws': forms.HiddenInput(),
         }
